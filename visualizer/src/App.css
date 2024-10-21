@@ -1,0 +1,59 @@
+.app-container
+{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.btn{
+  background-color: rgb(80, 78, 78);
+}
+.control-buttons
+{
+  display: flex;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  gap: 5rem;
+}
+
+.grid-container {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(50, 20px); /* 50 columns */
+  grid-template-rows: repeat(20, 20px);    /* 20 rows */
+  gap: 1px; /* Optional spacing between nodes */
+  width: fit-content; /* Adjust grid to fit content size */
+}
+
+.node {
+  width: 20px;
+  height: 20px;
+  background-color: aliceblue;
+}
+.node:hover
+{
+  background-color: aqua;
+}
+.node-start {
+  background-color: green;
+}
+
+.node-end {
+  background-color: red;
+}
+
+.node-wall {
+  background-color: black;
+}
+.hidden
+{
+  opacity: 0;
+}
