@@ -4,8 +4,9 @@ import './App.css'; // Make sure the path is correct
 import Button from "./components/Button";
 import { useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
-import {setSetupPhase,setReset,resetGrid} from './store/visualizerSlice'
-import { dijkstras } from "./algorithms/dijkstras";
+import {setSetupPhase,setReset,resetGrid,setPath} from './store/visualizerSlice'
+import { dijkstras } from "./algorithms/dijkstras/dijkstras";
+import { findPath } from "./algorithms/dijkstras/findPath";
 
 const App = ()=>{
   const dispatch = useDispatch();
@@ -33,8 +34,14 @@ const App = ()=>{
   }
 
   const findPathBtnHandler = ()=>{
-    console.log(grid)
-    console.log(dijkstras(grid,[startNode.row,startNode.col],[endNode.row,endNode.col]));
+    const returnedArr=dijkstras(grid,[startNode.row,startNode.col],[endNode.row,endNode.col]);
+    const path = findPath([startNode.row,startNode.col],[endNode.row,endNode.col],returnedArr.parentArr)
+    if(returnedArr.minDist!=-1)
+    {
+
+      dispatch(setPath(path));
+    }  
+    
   }
 
   return (<>

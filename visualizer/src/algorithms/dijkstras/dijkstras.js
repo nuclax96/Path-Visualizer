@@ -6,8 +6,12 @@ export const dijkstras = (grid,start, end)=>{
 
     const distance = Array.from({ length: rows }, () => Array(cols).fill(Infinity));
     const visited = Array.from({ length: rows }, () => Array(cols).fill(false));
+    const parent = Array.from({ length: rows }, () => Array(cols).fill(null));
+   
+
     distance[start[0]][start[1]]=0;
-    
+    parent[start[0]][start[1]]=[start[0],start[1]];
+
     function findMinDistance() {
         let minDist = Infinity;
         let minNode = null;
@@ -38,7 +42,8 @@ export const dijkstras = (grid,start, end)=>{
         const isEnd = currentNode.isEnd;
 
         if (isEnd) {
-            return distance[currentRow][currentCol]; // Found the shortest path to the destination
+            console.log(parent)
+            return {minDist:distance[currentRow][currentCol],parentArr:parent}; // Found the shortest path to the destination
         }
   
 
@@ -51,11 +56,14 @@ export const dijkstras = (grid,start, end)=>{
             if ((newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols) && !isWall && !visited[newRow][newCol])
             {
                 const newDist = distance[currentRow][currentCol] + 1;
-
+                
                 if (newDist < distance[newRow][newCol]) {
+                    parent[newRow][newCol]=[currentRow,currentCol];
                     distance[newRow][newCol] = newDist;
                 }
             }
         }
     }
+
+    
 }

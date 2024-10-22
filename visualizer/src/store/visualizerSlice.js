@@ -6,7 +6,8 @@ const createNode=(row,col)=>{
         col,
         isStart:row==0 && col==0,
         isEnd:row==19 && col==49,
-        isWall:false
+        isWall:false,
+        isPath:false,
     }
 }
 
@@ -32,7 +33,7 @@ const initialState = {
     grid:initializeGrid(20,50),
     startNode: {row:0,col:0},
     endNode:{row:19,col:49},
-    wall:initializeGrid(20,50)
+    wall:initializeGrid(20,50),
 }
 
 const visualizerSlice = createSlice(
@@ -109,15 +110,26 @@ const visualizerSlice = createSlice(
                         state.grid[i][j].isWall=false;
                         state.grid[i][j].isStart=false;
                         state.grid[i][j].isEnd=false;
+                        state.grid[i][j].isPath=false
                     }
                 }
 
                 state.grid[0][0].isStart=true;
                 state.grid[19][49].isEnd=true;
+            },
+            setPath:(state,action)=>{
+                const path=action.payload;
+                
+                for(let i=0;i<path.length;i++)
+                {
+                    const [row,col] = path[i];
+                    
+                    state.grid[row][col].isPath=true;
+                }
             }
         }
     }
 )
 
-export const {setSetupPhase,setEndNode,setStartNode,setWalls,setReset,resetGrid} = visualizerSlice.actions ;
+export const {setSetupPhase,setEndNode,setStartNode,setWalls,setReset,resetGrid,setPath} = visualizerSlice.actions ;
 export default visualizerSlice.reducer;

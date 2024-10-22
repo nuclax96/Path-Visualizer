@@ -10,6 +10,11 @@
 .btn{
   background-color: rgb(80, 78, 78);
 }
+.btn:focus {
+  outline: none; /* Ensure outline is removed when button is focused */
+  /* Optional: Add a custom style for focus */
+  box-shadow: 0 0 5px #646cff;
+}
 
 .btn-selected
 {
@@ -58,6 +63,11 @@
 .node-wall {
   background-color: black;
 }
+.node-path{
+  background-color:#646cff;
+  transition: background-color  cubic-bezier(0.18, 0.89, 0.32, 1.28) .5s;
+}
+
 .hidden
 {
   opacity: 0;

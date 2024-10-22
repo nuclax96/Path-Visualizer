@@ -44,6 +44,7 @@ const Grid = ({nrow,ncol}) => {
                         isStart={node.isStart}
                         isEnd={node.isEnd}
                         isWall={node.isWall}
+                        isPath = {node.isPath}
                       />
                     );
                   })}
