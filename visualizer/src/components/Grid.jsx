@@ -4,7 +4,6 @@ import Node from './node';
 import {useSelector,useDispatch} from 'react-redux'
 import { setStartNode ,setEndNode,setWalls} from '../store/visualizerSlice';
 
-
 const Grid = ({nrow,ncol}) => {
     const dispatch = useDispatch();
     const grid = useSelector((state)=>state.visualizer.grid);

@@ -10,6 +10,11 @@
 .btn{
   background-color: rgb(80, 78, 78);
 }
+
+.btn-selected
+{
+  border-color: #646cff;
+}
 .control-buttons
 {
   display: flex;

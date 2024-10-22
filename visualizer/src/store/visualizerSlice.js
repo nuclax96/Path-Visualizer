@@ -83,7 +83,7 @@ const visualizerSlice = createSlice(
                     const node = state.endNode;
                     state.grid[node.row][node.col].isEnd=false;
                 }
-                state.endNodeNode=action.payload;
+                state.endNode=action.payload;
                 state.grid[row][col].isEnd=true;
             },
             setWalls: (state,action)=>{
