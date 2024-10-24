@@ -8,6 +8,7 @@ const createNode=(row,col)=>{
         isEnd:row==19 && col==49,
         isWall:false,
         isPath:false,
+        isVisited:false
     }
 }
 
@@ -111,6 +112,7 @@ const visualizerSlice = createSlice(
                         state.grid[i][j].isStart=false;
                         state.grid[i][j].isEnd=false;
                         state.grid[i][j].isPath=false
+                        state.grid[i][j].isVisited=false;
                     }
                 }
 
@@ -125,10 +127,15 @@ const visualizerSlice = createSlice(
                     const [row,col] = path[i]; 
                     state.grid[row][col].isPath=true;
                 }
+            },
+
+            markVisited:(state,action)=>{
+                const [row,col]=action.payload
+                state.grid[row][col].isVisited=true;
             }
         }
     }
 )
 
-export const {setSetupPhase,setEndNode,setStartNode,setWalls,setReset,resetGrid,setPath} = visualizerSlice.actions ;
+export const {setSetupPhase,setEndNode,setStartNode,setWalls,setReset,resetGrid,setPath,markVisited} = visualizerSlice.actions ;
 export default visualizerSlice.reducer;

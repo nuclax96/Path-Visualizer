@@ -45,6 +45,7 @@ const Grid = ({nrow,ncol}) => {
                         isEnd={node.isEnd}
                         isWall={node.isWall}
                         isPath = {node.isPath}
+                        isVisited={node.isVisited}
                       />
                     );
                   })}

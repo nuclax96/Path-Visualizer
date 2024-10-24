@@ -1,5 +1,6 @@
+import { markVisited } from "../../store/visualizerSlice";
 
-export const dijkstras = (grid,start, end)=>{
+export const dijkstras = (grid,start, end,dispatch)=>{
     const rows = grid.length;
     const cols = grid[0].length;
     const directions = [[0,1],[1,0],[0,-1],[-1,0]];
@@ -46,14 +47,14 @@ export const dijkstras = (grid,start, end)=>{
             return {minDist:distance[currentRow][currentCol],parentArr:parent}; // Found the shortest path to the destination
         }
   
-
+        dispatch(markVisited([currentRow,currentCol]))
         visited[currentRow][currentCol] = true;
 
         for (const [dRow, dCol] of directions) {
             const newRow = currentRow + dRow;
             const newCol = currentCol + dCol;
             // grid[newRow][newCol] === 0 means no wall
-            if ((newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols) && !isWall && !visited[newRow][newCol])
+            if ((newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols) && grid[newRow][newCol].isWall!=true && !visited[newRow][newCol])
             {
                 const newDist = distance[currentRow][currentCol] + 1;
                 

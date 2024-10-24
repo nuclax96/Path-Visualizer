@@ -37,7 +37,7 @@ const App = ()=>{
   }
 
   const findPathBtnHandler = ()=>{
-    const returnedArr=dijkstras(grid,[startNode.row,startNode.col],[endNode.row,endNode.col]);
+    const returnedArr=dijkstras(grid,[startNode.row,startNode.col],[endNode.row,endNode.col],dispatch);
     const path = findPath([startNode.row,startNode.col],[endNode.row,endNode.col],returnedArr.parentArr)
     if(returnedArr.minDist!=-1)
     {
