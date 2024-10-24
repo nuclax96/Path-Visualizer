@@ -122,8 +122,7 @@ const visualizerSlice = createSlice(
                 
                 for(let i=0;i<path.length;i++)
                 {
-                    const [row,col] = path[i];
-                    
+                    const [row,col] = path[i]; 
                     state.grid[row][col].isPath=true;
                 }
             }
