@@ -9,6 +9,7 @@ export const dijkstras = (grid,start, end,dispatch)=>{
     const visited = Array.from({ length: rows }, () => Array(cols).fill(false));
     const parent = Array.from({ length: rows }, () => Array(cols).fill(null));
    
+    console.log(grid)
 
     distance[start[0]][start[1]]=0;
     parent[start[0]][start[1]]=[start[0],start[1]];

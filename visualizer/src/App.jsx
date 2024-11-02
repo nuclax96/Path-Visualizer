@@ -5,6 +5,7 @@ import Button from "./components/Button";
 import { useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import {setSetupPhase,setReset,resetGrid,setPath} from './store/visualizerSlice'
+import { bfs } from "./algorithms/BFS/bfs";
 import { dijkstras } from "./algorithms/dijkstras/dijkstras";
 import { findPath } from "./algorithms/dijkstras/findPath";
 import MyNavbar  from "./components/MyNavbar";
@@ -37,6 +38,7 @@ const App = ()=>{
   }
 
   const findPathBtnHandler = ()=>{
+    // const returnedArr=bfs(grid,[startNode.row,startNode.col],[endNode.row,endNode.col],dispatch);
     const returnedArr=dijkstras(grid,[startNode.row,startNode.col],[endNode.row,endNode.col],dispatch);
     const path = findPath([startNode.row,startNode.col],[endNode.row,endNode.col],returnedArr.parentArr)
     if(returnedArr.minDist!=-1)
